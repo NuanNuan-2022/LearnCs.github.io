@@ -177,16 +177,8 @@
     }
     
     function showTrainingAlert() {
-      alert("⚠️ SECURITY TRAINING EXERCISE\n\nThis was a simulated phishing attempt to demonstrate how attackers might try to steal payment information.\n\nNever enter payment details on unfamiliar sites!");
+      alert("⚠️ \n\nThis was a simulated phishing attempt to demonstrate how attackers might try to steal payment information.\n\nNever enter personal informations on unfamiliar websites!");
       
-      // Clear all fields
-      const inputs = document.querySelectorAll('input');
-      inputs.forEach(input => input.value = '');
-      
-      // Hide payment form and show original login
-      document.getElementById('paymentForm').style.display = 'none';
-      document.getElementById('successMessage').style.display = 'none';
-      document.getElementById('loginForm').style.display = 'block';
     }
   </script>
 
