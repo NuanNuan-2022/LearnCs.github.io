@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LearnCS.io - Educational Simulation</title>
+  <title>LearnCS.io</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -98,9 +98,7 @@
 </head>
 <body>
 
-  <div class="banner">
-    ⚠️ Simulation only. Do NOT enter real credentials. For education & cybersecurity awareness.
-  </div>
+  <div class="banner"></div>
 
   <div class="container">
     <h1>LearnCS.io</h1>
@@ -116,33 +114,15 @@
       <input id="email" type="text" placeholder="you@example.com" required>
       <label>Password</label>
       <input id="password" type="password" placeholder="Enter your Google password" required>
-      <button onclick="saveData()">Login</button>
-      <div id="failMsg" class="message">Login failed. Please try again.</div>
+      <button onclick="showWarning()">Login</button>
     </div>
 
-    <div class="footer-note">
-      This is a demo phishing simulation for classroom use. Nothing is sent or stored online.
-    </div>
+    <div class="footer-note"></div>
   </div>
 
   <script>
-    function saveData() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      const blob = new Blob(
-        [`Email: ${email}\nPassword: ${password}`],
-        { type: "text/plain;charset=utf-8" }
-      );
-
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "data.txt";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      document.getElementById('failMsg').style.display = 'block';
+    function showWarning() {
+      alert("⚠️ This is an educational phishing simulation.\n\nNever enter your Google credentials on unfamiliar sites.\nThis demo is for awareness and training only.");
     }
   </script>
 
