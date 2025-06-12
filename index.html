@@ -94,6 +94,30 @@
       font-weight: bold;
       display: none;
     }
+    
+    .payment-form {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+    }
+    
+    .payment-form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+    }
+    
+    .payment-form button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -114,15 +138,55 @@
       <input id="email" type="text" placeholder="you@example.com" required>
       <label>Password</label>
       <input id="password" type="password" placeholder="Enter your Google password" required>
-      <button onclick="showWarning()">Login</button>
+      <button onclick="handleLogin()">Login</button>
+    </div>
+    
+    <div id="successMessage" style="display:none; color:green; margin-top:20px;">
+      Login successful! Please complete payment to access courses.
+    </div>
+    
+    <div id="paymentForm" class="payment-form">
+      <h3>Payment Required</h3>
+      <p>Complete payment to unlock all courses ($49.99/month)</p>
+      <label>Card Number</label>
+      <input type="text" placeholder="1234 5678 9012 3456" required>
+      <label>Expiration Date</label>
+      <input type="text" placeholder="MM/YY" required>
+      <label>CVV</label>
+      <input type="text" placeholder="123" required>
+      <label>Cardholder Name</label>
+      <input type="text" placeholder="John Doe" required>
+      <button onclick="showTrainingAlert()">Complete Payment</button>
     </div>
 
     <div class="footer-note"></div>
   </div>
 
   <script>
-    function showWarning() {
-      alert("⚠️ This is an educational phishing simulation.\n\nNever enter your Google credentials on unfamiliar sites.\nThis demo is for awareness and training only.");
+    function handleLogin() {
+      // Hide login form
+      document.getElementById('loginForm').style.display = 'none';
+      
+      // Show success message
+      document.getElementById('successMessage').style.display = 'block';
+      
+      // Show payment form after short delay
+      setTimeout(function() {
+        document.getElementById('paymentForm').style.display = 'block';
+      }, 1000);
+    }
+    
+    function showTrainingAlert() {
+      alert("⚠️ SECURITY TRAINING EXERCISE\n\nThis was a simulated phishing attempt to demonstrate how attackers might try to steal payment information.\n\nNever enter payment details on unfamiliar sites!");
+      
+      // Clear all fields
+      const inputs = document.querySelectorAll('input');
+      inputs.forEach(input => input.value = '');
+      
+      // Hide payment form and show original login
+      document.getElementById('paymentForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
     }
   </script>
 
